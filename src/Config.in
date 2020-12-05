@@ -1,5 +1,5 @@
 config BR2_PACKAGE_PI_MAIN_CONTROLLER
-	bool "PI_MAIN_CONTROLLER"
+	bool "pi-main-controller"
 	help
         Main controller software for orchestrating tasks with a fleet of
         devices and various EC2 containers.
