@@ -7,6 +7,8 @@ build: buildroot/.git
 	@make clean-br
 	# Copy over source
 	cp -R src/ buildroot/package/pi-main-controller/
+	# Copy board files (overwriting existing files if needed)
+	cp src/board/* buildroot/board/raspberrypi
 	./scripts/run.py add-package
 	# Run build
 	cd buildroot && make
