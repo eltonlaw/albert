@@ -37,3 +37,6 @@ buildroot/.git:
 rebuild:
 	rm -rf buildroot/output/build/
 	cd buildroot && make pi-main-controller-rebuild
+
+menuconfig:
+	cd buildroot && make $@
