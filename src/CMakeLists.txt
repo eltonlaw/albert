@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.1.0)
+set(PROJECT pi-main-controller)
 
-project(pi-main-controller VERSION 1.0.0 LANGUAGES CXX)
+project(${PROJECT} VERSION 1.0.0 LANGUAGES CXX)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -13,10 +15,15 @@ if(CMAKE_VERSION VERSION_LESS "3.7.0")
     set(CMAKE_INCLUDE_CURRENT_DIR ON)
 endif()
 
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
+find_package(Qt5 COMPONENTS Qml Quick Gui REQUIRED)
 
-add_executable(pi-main-controller
+add_executable(${PROJECT}
     main.cpp
-)
+    qml.qrc
+    )
 
-target_link_libraries(pi-main-controller Qt5::Widgets)
+target_link_libraries(${PROJECT}
+    Qt5::Qml
+    Qt5::Quick
+    Qt5::Gui
+    )
