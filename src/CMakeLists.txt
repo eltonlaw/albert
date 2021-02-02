@@ -19,6 +19,7 @@ find_package(Qt5 COMPONENTS Qml Quick Gui REQUIRED)
 
 add_executable(${PROJECT}
     main.cpp
+    backend.cpp
     qml.qrc
     )
 

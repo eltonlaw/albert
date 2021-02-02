@@ -1,5 +1,6 @@
 import QtQuick 2.3
-import QtQuick.Window 2.2
+import QtQuick.Window 2.3
+import com.pmc 0.1
 
 // main window
 Window {	
@@ -7,8 +8,12 @@ Window {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            	Qt.quit();
+            Qt.quit();
         }
+    }
+
+    Backend {
+        id: backend_id
     }
 
 	Rectangle {
