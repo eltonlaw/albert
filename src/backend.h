@@ -8,13 +8,16 @@ struct State {
 class Backend : public QObject
 {
 	Q_OBJECT
-	Q_PROPERTY(State state READ get_state WRITE set_state NOTIFY state_changed)
+	// Q_PROPERTY(State state READ get_state WRITE set_state NOTIFY state_changed)
 public:
-    Backend();
+    explicit Backend(QObject *parent = 0);
     State get_state();
     void set_state(State s);
-signals:
-    void state_changed();
+
+public slots:
+    void handle();
+// signals:
+//     void state_changed();
 private:
     State state;
 };

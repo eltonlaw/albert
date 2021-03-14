@@ -1,9 +1,9 @@
-import QtQuick 2.3
-import QtQuick.Window 2.3
-import com.pmc 0.1
+import QtQuick 2.7
+import QtQuick.Window 2.7
+import "."
 
 // main window
-Window {	
+Window {
     visible: true
     MouseArea {
         anchors.fill: parent
@@ -12,16 +12,12 @@ Window {
         }
     }
 
-    Backend {
-        id: backend_id
+    Rectangle {
+        anchors.fill: parent
+        Text {
+            anchors.centerIn: parent
+            text: "Hello World"
+        }
     }
-
-	Rectangle {
-		anchors.fill: parent
-		Text {
-			anchors.centerIn: parent
-			text: "Hello World"			
-		}
-	}
-
+    Home {}
 }
