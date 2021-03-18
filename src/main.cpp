@@ -1,9 +1,10 @@
 #include <QApplication>
+#include <QDebug>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include <QDirIterator>
-#include <QDebug>
+#include <QQmlEngine>
 #include "backend.h"
+#include "temp_sensor.h"
 
 int main(int argc, char *argv[])
 {
@@ -11,14 +12,11 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-
+    TempSensor temp_sensor;
+    engine.rootContext()->setContextProperty("tempSensor", &temp_sensor);
     Backend backend;
     engine.rootContext()->setContextProperty("backend", &backend);
     engine.load(QStringLiteral("qrc:/main.qml"));
-
-    // QDirIterator it(":/", QDirIterator::Subdirectories);
-    // while (it.hasNext())
-    //     qDebug() << it.next();
 
     return app.exec();
 }

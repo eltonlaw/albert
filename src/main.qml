@@ -1,6 +1,7 @@
 import QtQuick 2.7
 import QtQuick.Window 2.7
 import QtCharts 2.15
+import QtQuick.Controls 2.0
 import "."
 
 // main window
@@ -16,8 +17,42 @@ Window {
         Navbar {}
         Grid {
             columns: 2
-
             spacing: 5
+
+            Grid {
+                width: 400
+                height: 400
+                columns: 3
+                spacing: 0
+                Button {
+                    id: btn_set
+                    text: "Inc TempSensor"
+                    onClicked: {
+                        tempSensor.temp = tempSensor.temp + 1;
+                        console.log("[TempSensor]: Inc", tempSensor.temp);
+                    }
+                }
+                Button {
+                    id: btn_start
+                    text: "Start TempSensor"
+                    onClicked: {
+                        tempSensor.start()
+                        console.log("[TempSensor]: Start", tempSensor.temp);
+                    }
+                }
+                Button {
+                    id: btn_stop
+                    text: "Stop TempSensor"
+                    onClicked: {
+                        tempSensor.stop()
+                        console.log("[TempSensor]: Stop", tempSensor.temp);
+                    }
+                }
+                Text {
+                    text: Number(tempSensor.temp).toFixed(2)
+                }
+            }
+
             Rectangle {
                 width: 400
                 height: 400
