@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Home.qml</file>
+        <file>Navbar.qml</file>
+        <file>NavbarButton.qml</file>
     </qresource>
 </RCC>

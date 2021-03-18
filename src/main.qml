@@ -13,7 +13,7 @@ Window {
     Column {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        Home {}
+        Navbar {}
         Grid {
             columns: 2
 
