@@ -10,6 +10,8 @@ build: buildroot/.git
 	# Copy board files (overwriting existing files if needed)
 	cp src/board/* buildroot/board/raspberrypi
 	./scripts/run.py add-package
+	# Rebuild project
+	@make pi-main-controller-rebuild
 	# Run build
 	cd buildroot && make
 	@make check
@@ -40,5 +42,5 @@ rebuild:
 	rm -rf buildroot/output/build/
 	cd buildroot && make pi-main-controller-rebuild
 
-menuconfig:
+menuconfig pi-main-controller-rebuild:
 	cd buildroot && make $@
