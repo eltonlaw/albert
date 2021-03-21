@@ -17,7 +17,7 @@ build: buildroot/.git
 	@make check
 
 check:
-	ls buildroot/output/build/pi-main-controller-0.0.1
+	ls buildroot/output/build/pi-main-controller-0.0.2
 	ls buildroot/output/target/usr/bin/pi-main-controller
 
 # Whichever config is newer, sync that to the other
