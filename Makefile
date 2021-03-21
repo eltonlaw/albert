@@ -44,3 +44,6 @@ rebuild:
 
 menuconfig pi-main-controller-rebuild:
 	cd buildroot && make $@
+
+run:
+	cd src && make $@
