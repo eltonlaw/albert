@@ -6,6 +6,8 @@ import "."
 
 // main window
 Window {
+    width: 800
+    height: 480
     visible: true
     MouseArea {
         anchors.fill: parent
@@ -14,14 +16,17 @@ Window {
     Column {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        Navbar {}
+        Navbar {
+            width: 800
+            height: 30
+        }
         Grid {
             columns: 2
             spacing: 5
 
             Grid {
                 width: 400
-                height: 400
+                height: 225
                 columns: 3
                 spacing: 0
                 Button {
@@ -55,7 +60,7 @@ Window {
 
             Rectangle {
                 width: 400
-                height: 400
+                height: 225
                 ChartView {
                     anchors.fill: parent
                     theme: ChartView.ChartThemeBrownSand
@@ -73,7 +78,7 @@ Window {
             }
             Rectangle {
                 width: 400
-                height: 400
+                height: 225
                 ChartView {
                     title: "Line"
                     anchors.fill: parent
