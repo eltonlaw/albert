@@ -1,4 +1,4 @@
-.PHONY: build
+.PHONY: build test
 
 # FIXME: the default PI_MAIN_CONTROLLER_BUILD_CMDS seems to be just a `make` so
 # whatever the first recipe is will be run as the build command. Make sure this stays
@@ -14,3 +14,6 @@ run: build
 
 build:
 	cd build && make
+
+test:
+	g++ test.cpp -o test && ./test
