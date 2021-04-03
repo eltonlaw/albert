@@ -1,5 +1,6 @@
 #pragma once
 #include <QObject>
+#include "lib/lib.h"
 
 class TempSensor: public QObject {
     Q_OBJECT

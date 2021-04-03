@@ -1,6 +1,6 @@
 #include "test_utils.h"
 
-#include "../src/queue.h"
+#include "../src/lib/lib.h"
 
 namespace t = testing;
 

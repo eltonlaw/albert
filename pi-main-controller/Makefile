@@ -15,5 +15,8 @@ run: build
 build:
 	cd build && make
 
+clean:
+	cd build && make $@
+
 test:
 	cd test && make test

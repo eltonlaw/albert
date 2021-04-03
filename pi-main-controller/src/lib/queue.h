@@ -1,5 +1,7 @@
 #include <vector>
 
+namespace lib  {
+
 /* FIFO Queue with fixed buffer size
  * 
  * When getting by index, higher indices mean it was queued later
@@ -65,3 +67,5 @@ const T& fixed_queue<T, max_len>::get(int i) {
 
     return vec[i_offset]; 
 }
+
+} // namespace lib

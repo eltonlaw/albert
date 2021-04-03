@@ -1,2 +1,2 @@
 test:
-	g++ test.cpp -o test && ./test
+	g++ test.cpp -o run_tests && ./run_tests
