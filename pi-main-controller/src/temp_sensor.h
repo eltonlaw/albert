@@ -16,7 +16,8 @@ public slots:
     void stop();
 
 private:
-    double _temp = -1.0;
+    double temp = -1.0;
     double get_temp();
     void set_temp(double);
+    lib::fixed_queue<double, 10> queue;
 };
