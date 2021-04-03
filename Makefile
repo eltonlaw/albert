@@ -6,9 +6,9 @@ build: buildroot/.git
 	# Cleanup buildroot build
 	@make clean-br
 	# Copy over source
-	cp -R src/ buildroot/package/pi-main-controller/
+	cp -R pi-main-controller/ buildroot/package/pi-main-controller/
 	# Copy board files (overwriting existing files if needed)
-	cp src/board/* buildroot/board/raspberrypi
+	cp pi-main-controller/board/* buildroot/board/raspberrypi
 	./scripts/run.py add-package
 	# Rebuild project
 	@make pi-main-controller-rebuild
@@ -22,8 +22,8 @@ check:
 
 # Whichever config is newer, sync that to the other
 sync-config:
-	rsync -rtuv src/.config buildroot/.config
-	rsync -rtuv buildroot/.config src/.config
+	rsync -rtuv pi-main-controller/.config buildroot/.config
+	rsync -rtuv buildroot/.config pi-main-controller/.config
 
 clean-br:
 	cd buildroot && git checkout -- .
@@ -46,4 +46,4 @@ menuconfig pi-main-controller-rebuild:
 	cd buildroot && make $@
 
 run:
-	cd src && make $@
+	cd pi-main-controller && make $@

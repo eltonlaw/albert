@@ -20,10 +20,10 @@ find_package(Qt5 COMPONENTS Qml Quick Gui Charts REQUIRED)
 qt5_add_resources(QT_RESOURCES qml.qrc)
 
 if(NOT DEFINED SOURCES)
-    file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
+    file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 endif()
 if(NOT DEFINED HEADERS)
-    file(GLOB HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
+    file(GLOB HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src/*.h)
 endif()
 
 add_executable(${PROJECT}

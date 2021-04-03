@@ -16,4 +16,4 @@ build:
 	cd build && make
 
 test:
-	g++ test.cpp -o test && ./test
+	cd test && make test
