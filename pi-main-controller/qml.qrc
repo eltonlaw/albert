@@ -3,5 +3,6 @@
         <file>main.qml</file>
         <file>Navbar.qml</file>
         <file>NavbarButton.qml</file>
+        <file>TemperatureChart.qml</file>
     </qresource>
 </RCC>

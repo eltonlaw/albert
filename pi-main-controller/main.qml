@@ -79,24 +79,8 @@ Window {
             Rectangle {
                 width: 400
                 height: 225
-                ChartView {
-                    title: "Temperature"
-                    anchors.fill: parent
-                    antialiasing: true
+                TemperatureChart {
 
-                    LineSeries {
-                        name: "Sensor 1"
-                        XYPoint { x: -9.0; y: tempSensor.get(0) }
-                        XYPoint { x: -8.0; y: tempSensor.get(1) }
-                        XYPoint { x: -7.0; y: tempSensor.get(2) }
-                        XYPoint { x: -6.0; y: tempSensor.get(3) }
-                        XYPoint { x: -5.0; y: tempSensor.get(4) }
-                        XYPoint { x: -4.0; y: tempSensor.get(5) }
-                        XYPoint { x: -3.0; y: tempSensor.get(6) }
-                        XYPoint { x: -2.0; y: tempSensor.get(7) }
-                        XYPoint { x: -1.0; y: tempSensor.get(8) }
-                        XYPoint { x: +0.0; y: tempSensor.get(9) }
-                    }
                 }
             }
         }
