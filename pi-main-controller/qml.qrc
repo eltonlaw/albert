@@ -1,8 +1,8 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
-        <file>Navbar.qml</file>
-        <file>NavbarButton.qml</file>
-        <file>TemperatureChart.qml</file>
+        <file>qml/main.qml</file>
+        <file>qml/Navbar.qml</file>
+        <file>qml/NavbarButton.qml</file>
+        <file>qml/TemperatureChart.qml</file>
     </qresource>
 </RCC>

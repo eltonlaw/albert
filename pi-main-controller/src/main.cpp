@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("tempSensor", &temp_sensor);
     Backend backend;
     engine.rootContext()->setContextProperty("backend", &backend);
-    engine.load(QStringLiteral("qrc:/main.qml"));
+    engine.load(QStringLiteral("qrc:/qml/main.qml"));
 
     return app.exec();
 }
