@@ -3,7 +3,6 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QQmlEngine>
-#include "backend.h"
 #include "temp_sensor.h"
 
 int main(int argc, char *argv[])
@@ -14,8 +13,6 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     TempSensor temp_sensor;
     engine.rootContext()->setContextProperty("tempSensor", &temp_sensor);
-    Backend backend;
-    engine.rootContext()->setContextProperty("backend", &backend);
     engine.load(QStringLiteral("qrc:/qml/main.qml"));
 
     return app.exec();
