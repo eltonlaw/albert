@@ -1,0 +1,42 @@
+From 5466e0c5c97dd80ff6856ebfc8b74a9ec8cb93df Mon Sep 17 00:00:00 2001
+From: Elton Law <eltonlaw296@gmail.com>
+Date: Mon, 5 Apr 2021 14:39:40 -0400
+Subject: [PATCH] package/qt5webengine: needs host-{freetype, host-libjpeg}
+
+Fixes failing command
+
+    /path/buildroot/output/host/bin/python2 \
+      /path/buildroot/output/build/qt5webengine-5.15.2/src/3rdparty/chromium/build/config/linux/pkg-config.py \
+      -p \
+      /path/buildroot/output/build/qt5webengine-5.15.2/host-bin/host-pkg-config \
+      libjpeg
+
+Giving this error
+
+    Package libjpeg was not found in the pkg-config search path.
+    Perhaps you should add the directory containing `libjpeg.pc'
+    to the PKG_CONFIG_PATH environment variable
+    Package 'libjpeg', required by 'virtual:world', not found
+    Could not run pkg-config.
+
+Signed-off-by: Elton Law <eltonlaw296@gmail.com>
+---
+ package/qt5/qt5webengine/qt5webengine.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/package/qt5/qt5webengine/qt5webengine.mk b/package/qt5/qt5webengine/qt5webengine.mk
+index 64c9c96cc2..da46f6cb04 100644
+--- a/package/qt5/qt5webengine/qt5webengine.mk
++++ b/package/qt5/qt5webengine/qt5webengine.mk
+@@ -9,7 +9,7 @@ QT5WEBENGINE_SITE = $(QT5_SITE)
+ QT5WEBENGINE_SOURCE = qtwebengine-$(QT5_SOURCE_TARBALL_PREFIX)-$(QT5WEBENGINE_VERSION).tar.xz
+ QT5WEBENGINE_DEPENDENCIES = ffmpeg libglib2 libvpx libxkbcommon opus webp \
+ 	qt5declarative qt5webchannel host-bison host-flex host-gperf \
+-	host-pkgconf host-python
++	host-pkgconf host-python host-libjpeg host-freetype
+ QT5WEBENGINE_INSTALL_STAGING = YES
+ 
+ include package/qt5/qt5webengine/chromium-latest.inc
+-- 
+2.31.1
+

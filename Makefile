@@ -1,6 +1,7 @@
 # Assumption that this makefile is run from the root of `pi-main-controller`
 
 build: buildroot/.git
+	cd buildroot/ && git reset --hard
 	# Synchronize configs from both sides
 	@make sync-config
 	# Cleanup buildroot build
@@ -10,6 +11,8 @@ build: buildroot/.git
 	# Copy board files (overwriting existing files if needed)
 	cp pi-main-controller/board/* buildroot/board/raspberrypi
 	./scripts/run.py add-package
+	# Patch qt5webengine so that host-libjpeg and host-freetype are dependencies
+	cd buildroot/ && git apply ../patches/0001-package-qt5webengine-needs-host-freetype-host-libjpeg.patch
 	# Rebuild project
 	@make pi-main-controller-rebuild
 	# Run build
