@@ -1,11 +1,13 @@
 #include <iostream>
 #include <vector>
 #include "test_queue.h"
+#include "test_random.h"
 
 void run_tests() {
     // Instantiate vector of all testing functions (thunks)
     std::vector<void(*)()> test_fns {
         test_fixed_queue,
+        test_urandom,
     };
     // Loop over each unit test, running it
     for (const auto& test_fn : test_fns) {

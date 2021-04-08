@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <stdlib.h>
 
@@ -26,6 +27,10 @@ void assert_equal(T x, T y) {
             exit (EXIT_FAILURE);
         }
     }            
+}
+
+void assert_true(bool b) {
+    assert_equal(b, true);
 }
 
 } // namespace testing

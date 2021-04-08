@@ -6,7 +6,7 @@ namespace t = testing;
 
 void test_fixed_queue() {
     t::assert_equal(0, 0);
-    fixed_queue<int, 3> q;
+    lib::fixed_queue<int, 3> q;
     t::assert_equal(q.size, 0);
     t::assert_equal(q.get(0), 0);
     q.enqueue(1);
