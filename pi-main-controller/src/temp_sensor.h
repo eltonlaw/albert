@@ -24,6 +24,7 @@ private:
     double get_temp();
     void set_temp(double);
     lib::fixed_queue<double, 10> queue;
+    lib::urandom rng {};
     QList<float> temps;
     QList<float> get_temps();
 };
