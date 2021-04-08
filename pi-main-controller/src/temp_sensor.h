@@ -1,4 +1,5 @@
 #pragma once
+
 #include <QObject>
 #include <QList>
 #include "lib/lib.h"
