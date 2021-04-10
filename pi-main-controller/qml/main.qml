@@ -61,20 +61,26 @@ Window {
             Rectangle {
                 width: 400
                 height: 225
-                ChartView {
-                    anchors.fill: parent
-                    theme: ChartView.ChartThemeBrownSand
-                    antialiasing: true
+                    ChartView {
+                        id: chartView
+                        anchors.fill: parent
 
-                    PieSeries {
-                        id: pieSeries
-                        PieSlice { label: "Volkswagen"; value: 13.5 }
-                        PieSlice { label: "Toyota"; value: 10.9 }
-                        PieSlice { label: "Ford"; value: 8.6 }
-                        PieSlice { label: "Skoda"; value: 8.2 }
-                        PieSlice { label: "Volvo"; value: 6.8 }
+                        ValueAxis {
+                            id: axisX
+                            min: 0
+                            max: 400
+                        }
+
+                        Component.onCompleted:  {
+                            mapper.series = series2
+                        }
+
+                        LineSeries {
+                            id: series2
+                            axisX: axisX
+                            name: "From C++"
+                        }
                     }
-                }
             }
             Rectangle {
                 width: 400

@@ -35,4 +35,5 @@ target_link_libraries(${PROJECT}
     Qt5::Quick
     Qt5::Gui
     Qt5::Charts
+    pthread
     )
