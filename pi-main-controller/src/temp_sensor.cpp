@@ -29,13 +29,25 @@ void TempSensor::append(const QPointF& point)
     endInsertRows();
 }
 
-
+/* Returns number of time/temperature datapoints available
+ *
+ * Number of rows should usually be the max size of the fixed_queue
+ * except in the beginning (when its still filling up)
+ *
+ * Required when subclassing QAbstractTableModel
+ */
 int TempSensor::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
     return m_data.size();
 }
 
+/* Returns number of columns in data
+ *
+ * Fixed to 2 because each datapoint is [time, temperature]
+ *
+ * Required when subclassing QAbstractTableModel
+ */
 int TempSensor::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
@@ -53,27 +65,46 @@ QVariant TempSensor::headerData(int section, Qt::Orientation orientation, int ro
         return "y";
 }
 
+/* Returns most recent n temperatures
+ *
+ * ...where n is the size of the fixed_queue, currently hardcoded at 50
++*/
 QVariant TempSensor::data(const QModelIndex &index, int role) const
 {
     Q_UNUSED(role)
     // FIXME: make queue store tuples
+    // auto r = index.row();
     // if (index.column() == 0)
-    //     return queue.get(index.row());
+    //     return queue.get(r);
     // else
-    //     return queue.get(index.row());
+    //     return queue.get(r);
     if (index.column() == 0)
         return m_data[index.row()].x();
     else
         return m_data[index.row()].y();
 }
 
+/* Read temperature from device
+ *
+ * Assumes that there's a char device driver at `/dev/bme280`
+ */
+double TempSensor::read_temperature_sensor() {
+    return (double) (rng.random() % 25);
+}
+
+/* Continuously poll temperature sensor
+ *
+ * while true fn to continuously read latest temp from device and emit
+ * new_temp_measurement. This should be run in a separate thread
+ */
 void TempSensor::poll()
 {
     for(double t=0 ; ; t+=1)
     {
-        double y = (1 + sin(t/10.0)) / 2.0;
+        // double y = read_temperature_sensor();
+        double y = (1 + sin(t/10.0)) / 2.0 * 20;
 
-        emit new_temp_measurement(QPointF(0, y));
+        emit new_temp_measurement(QPointF(t, y));
 
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }

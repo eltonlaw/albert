@@ -12,9 +12,12 @@ class TempSensor : public QAbstractTableModel
 {
     Q_OBJECT
 signals:
+    // signal emitted during every tick of poll(), passing along the new measurement
     void new_temp_measurement(const QPointF& point);
 public:
     TempSensor();
+
+    // QT specific methods (rowCount, columnCount and data are required to subclass QAbstractTableModel)
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
@@ -22,6 +25,7 @@ public:
 
     /* */
     void poll();
+    double read_temperature_sensor();
 
 private:
     void append(const QPointF& point);
