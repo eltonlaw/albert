@@ -23,8 +23,7 @@ public:
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
-    /* */
-    void poll();
+    void poll(std::chrono::milliseconds ms);
     double read_temperature_sensor();
 
 private:

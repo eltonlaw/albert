@@ -95,17 +95,22 @@ double TempSensor::read_temperature_sensor() {
 /* Continuously poll temperature sensor
  *
  * while true fn to continuously read latest temp from device and emit
- * new_temp_measurement. This should be run in a separate thread
+ * new_temp_measurement. This is run in a separate thread
+ *
+ * FIXME: argument should be a std::chrono::duration<Rep, Period> instead of ms
  */
-void TempSensor::poll()
+void TempSensor::poll(std::chrono::milliseconds ms)
 {
-    for(double t=0 ; ; t+=1)
-    {
-        // double y = read_temperature_sensor();
-        double y = (1 + sin(t/10.0)) / 2.0 * 20;
+    std::thread t([this, ms] {
+        for(double t=0 ; ; t+=1)
+        {
+            // double y = read_temperature_sensor();
+            double y = (1 + sin(t/10.0)) / 2.0 * 20;
 
-        emit new_temp_measurement(QPointF(t, y));
+            emit new_temp_measurement(QPointF(t, y));
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    }
+            std::this_thread::sleep_for(ms);
+        }
+    });
+    t.detach();
 }
