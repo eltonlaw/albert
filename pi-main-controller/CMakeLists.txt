@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1.0)
+cmake_minimum_required(VERSION 3.6.0)
 
 set(PROJECT pi-main-controller)
 project(${PROJECT} VERSION 1.0.0 LANGUAGES CXX)
@@ -19,21 +19,35 @@ qt5_add_resources(QT_RESOURCES qml.qrc)
 
 if(NOT DEFINED SOURCES)
     file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
+    list(FILTER SOURCES EXCLUDE REGEX ".*/src/main.cpp$")
 endif()
 if(NOT DEFINED HEADERS)
     file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src/*.h)
 endif()
 
-add_executable(${PROJECT}
-    ${SOURCES}
-    ${HEADERS}
-    ${QT_RESOURCES}
-    )
-
-target_link_libraries(${PROJECT}
+set(LIBS
     Qt5::Qml
     Qt5::Quick
     Qt5::Gui
     Qt5::Charts
     pthread
     )
+
+add_executable(${PROJECT}
+    src/main.cpp
+    ${SOURCES}
+    ${HEADERS}
+    ${QT_RESOURCES}
+    )
+
+target_link_libraries(${PROJECT} ${LIBS})
+
+if( CMAKE_BUILD_TYPE STREQUAL "Debug" )
+    add_executable(run_tests
+        test/test.cpp
+        ${SOURCES}
+        ${HEADERS}
+        ${QT_RESOURCES}
+        )
+    target_link_libraries(run_tests ${LIBS})
+endif( CMAKE_BUILD_TYPE STREQUAL "Debug" )
