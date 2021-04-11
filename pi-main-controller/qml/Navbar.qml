@@ -13,11 +13,4 @@ Grid {
             Qt.quit();
         }
     }
-    NavbarButton {
-        id: btn_handle
-        text: "Handle"
-        onClicked: {
-            backend.handle();
-        }
-    }
 }

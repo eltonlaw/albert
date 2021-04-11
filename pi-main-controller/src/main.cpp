@@ -13,19 +13,17 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    TempSensor temp_sensor;
-    auto my_data_model = new MyDataModel();
+    auto temp_sensor = new TempSensor();
 
-    auto mapper = new QtCharts::QVXYModelMapper();
-    mapper->setModel(my_data_model);
-    mapper->setXColumn(0);
-    mapper->setYColumn(1);
+    auto temp_sensor_mapper = new QtCharts::QVXYModelMapper();
+    temp_sensor_mapper->setModel(temp_sensor);
+    temp_sensor_mapper->setXColumn(0);
+    temp_sensor_mapper->setYColumn(1);
 
-    std::thread point_generator_thread(&MyDataModel::point_generator_proc, my_data_model);
+    std::thread point_generator_thread(&TempSensor::poll, temp_sensor);
     point_generator_thread.detach();
 
-    engine.rootContext()->setContextProperty("tempSensor", &temp_sensor);
-    engine.rootContext()->setContextProperty("mapper", mapper);
+    engine.rootContext()->setContextProperty("temp_sensor_mapper", temp_sensor_mapper);
     engine.load(QStringLiteral("qrc:/qml/main.qml"));
 
     return app.exec();
