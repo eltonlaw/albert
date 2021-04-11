@@ -14,6 +14,12 @@ ChartView {
         max: 400
     }
 
+    ValueAxis {
+        id: axisY
+        min: -20
+        max: 50
+    }
+
     Component.onCompleted:  {
         temp_sensor_mapper.series = series2
     }
@@ -21,6 +27,7 @@ ChartView {
     LineSeries {
         id: series2
         axisX: axisX
+        axisY: axisY
         name: "BME280"
     }
 }
