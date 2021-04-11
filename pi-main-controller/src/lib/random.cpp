@@ -9,12 +9,18 @@ urandom::urandom() {
 }
 
 urandom::~urandom() {
-    f.close();
+    if (f.is_open())
+        f.close();
 }
 
 unsigned long long int urandom::random() {
-    f.read(reinterpret_cast<char*>(&val), size);
-    return val;
+    if (f.is_open()) {
+        f.read(reinterpret_cast<char*>(&val), size);
+        return val;
+    }
+    else {
+        return val;
+    }
 }
 
 } // namespace lib

@@ -19,11 +19,13 @@ public:
     ~fixed_queue();
     void pop_front();
 
+    bool is_full();
     void enqueue(const T& value);
     const T& get(int i);
     
     // const T& fixed_queue[](std::size_t idx) const;
     int size = 0;
+    int capacity = max_len;
 
 private:
     std::vector<T> vec;
@@ -36,6 +38,11 @@ fixed_queue<T, max_len>::fixed_queue() :
 
 template <typename T, int max_len>
 fixed_queue<T, max_len>::~fixed_queue() {  }
+
+template <typename T, int max_len>
+bool fixed_queue<T, max_len>::is_full() {
+    return (size == vec.size());
+}
 
 /* Inserts into fixed queue
  *
@@ -50,7 +57,7 @@ fixed_queue<T, max_len>::~fixed_queue() {  }
  */
 template <typename T, int max_len>
 void fixed_queue<T, max_len>::enqueue(const T& value) {
-    if (size == vec.size()) {
+    if (is_full()) {
         if (i_start == size)
            i_start = 0; 
         vec[i_start++] = value;
