@@ -28,7 +28,7 @@ public:
 
 private:
     void append(const QPointF& point);
-    // lib::fixed_queue<QPointF, 10> queue;
+    lib::fixed_queue<QPointF, 10> queue;
     lib::urandom rng {};
     std::vector<QPointF> m_data;
 };

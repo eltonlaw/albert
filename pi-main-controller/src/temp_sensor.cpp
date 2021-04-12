@@ -14,6 +14,11 @@
 
 TempSensor::TempSensor()
 {
+    double first_temp = 10;
+    for (int i; i < queue.capacity; i++) {
+        auto p = QPointF(i, first_temp);
+        queue.enqueue(p);
+    }
     QObject::connect(this, &TempSensor::new_temp_measurement,
                      this, &TempSensor::append,
                      Qt::QueuedConnection);
