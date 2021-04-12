@@ -1,8 +1,13 @@
 #include <cmath>
+#include <QAbstractItemModel>
 #include <QDebug>
 #include <QList>
+#include <QModelIndex>
 #include <QObject>
 #include <QPointF>
+#include <Qt>
+#include <QtGlobal>
+#include <QVariant>
 #include <thread>
 
 #include "temp_sensor.h"
