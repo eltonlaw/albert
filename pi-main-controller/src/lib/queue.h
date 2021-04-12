@@ -21,7 +21,7 @@ public:
 
     bool is_full();
     void enqueue(const T& value);
-    const T& get(int i);
+    const T& get(int i) const;
     
     // const T& fixed_queue[](std::size_t idx) const;
     int size = 0;
@@ -67,11 +67,10 @@ void fixed_queue<T, max_len>::enqueue(const T& value) {
 }
 
 template <typename T, int max_len>
-const T& fixed_queue<T, max_len>::get(int i) {
+const T& fixed_queue<T, max_len>::get(int i) const {
     int i_offset = i + i_start;
-    if (i_offset >= vec.size())
+    if (i + i_start >= vec.size())
         i_offset -= vec.size();
-
     return vec[i_offset]; 
 }
 
