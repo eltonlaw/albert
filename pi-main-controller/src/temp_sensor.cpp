@@ -14,11 +14,6 @@
 
 TempSensor::TempSensor()
 {
-    double first_temp = 10;
-    for (int i; i < queue.capacity; i++) {
-        auto p = QPointF(i, first_temp);
-        queue.enqueue(p);
-    }
     QObject::connect(this, &TempSensor::new_temp_measurement,
                      this, &TempSensor::append,
                      Qt::QueuedConnection);
@@ -26,17 +21,18 @@ TempSensor::TempSensor()
 
 void TempSensor::append(const QPointF& point)
 {
-    if (m_data.size() > 0) {
-        beginRemoveRows(QModelIndex(), rowCount(), rowCount());
-        m_data.pop_back();
-        endRemoveRows();
+    if (queue.capacity == queue.size) {
+        // beginMoveRows(QModelIndex(), 0, 0, QModelIndex() , rowCount());
+        queue.enqueue(point);
+        QModelIndex top = createIndex(0, 0);
+        QModelIndex bottom = createIndex(rowCount() - 1, 2);
+        emit dataChanged(top, bottom);
+        // endMoveRows();
+    } else {
+        beginInsertRows(QModelIndex(), rowCount() -1 , rowCount() -1);
+        queue.enqueue(point);
+        endInsertRows();
     }
-
-    beginInsertRows(QModelIndex(), rowCount() -1 , rowCount() -1);
-    m_data.push_back(point);
-    for (auto e: m_data)
-        std::cout << e.x() << ", "<< e.y() << std::endl;
-    endInsertRows();
 }
 
 /* Returns number of time/temperature datapoints available
@@ -49,7 +45,7 @@ void TempSensor::append(const QPointF& point)
 int TempSensor::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-    return m_data.size();
+    return queue.size;
 }
 
 /* Returns number of columns in data
@@ -82,16 +78,11 @@ QVariant TempSensor::headerData(int section, Qt::Orientation orientation, int ro
 QVariant TempSensor::data(const QModelIndex &index, int role) const
 {
     Q_UNUSED(role)
-    // FIXME: make queue store tuples
-    // auto r = index.row();
-    // if (index.column() == 0)
-    //     return queue.get(r);
-    // else
-    //     return queue.get(r);
+    auto r = index.row();
     if (index.column() == 0)
-        return m_data[index.row()].x();
+        return queue.get(r).x();
     else
-        return m_data[index.row()].y();
+        return queue.get(r).y();
 }
 
 /* Read temperature from device

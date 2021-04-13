@@ -16,8 +16,8 @@ ChartView {
 
     ValueAxis {
         id: axisY
-        min: -20
-        max: 50
+        min: -5
+        max: 30
     }
 
     Component.onCompleted:  {
