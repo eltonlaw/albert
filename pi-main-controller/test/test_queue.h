@@ -18,8 +18,17 @@ void test_fixed_queue() {
     q.enqueue(3);
     t::assert_equal(q.get(2), 3);
     q.enqueue(4);
+    t::assert_equal(q.get(0), 2);
+    t::assert_equal(q.get(1), 3);
+    t::assert_equal(q.get(2), 4);
     q.enqueue(5);
+    t::assert_equal(q.get(0), 3);
+    t::assert_equal(q.get(1), 4);
+    t::assert_equal(q.get(2), 5);
     q.enqueue(6);
+    t::assert_equal(q.get(0), 4);
+    t::assert_equal(q.get(1), 5);
+    t::assert_equal(q.get(2), 6);
     q.enqueue(7);
     t::assert_equal(q.get(0), 5);
     t::assert_equal(q.get(1), 6);

@@ -41,11 +41,11 @@ buildroot/.git:
 	git submodule update --init
 
 # Removes cached build and runs rebuild
-rebuild:
-	rm -rf buildroot/output/build/
-	cd buildroot && make pi-main-controller-rebuild
+pi-main-controller-rebuild:
+	cd buildroot && make pi-main-controller-dirclean
+	cd buildroot && make $@
 
-menuconfig pi-main-controller-rebuild:
+barebox-menuconfig linux-menuconfig menuconfig uboot-menuconfig:
 	cd buildroot && make $@
 
 run:

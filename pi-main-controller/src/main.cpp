@@ -13,8 +13,9 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     auto temp_sensor = new TempSensor();
-    temp_sensor->poll(std::chrono::milliseconds(100));
+    temp_sensor->poll(std::chrono::milliseconds(200));
 
+    // Create a model mapper that takes temp sensor as the data source
     auto temp_sensor_mapper = new QtCharts::QVXYModelMapper();
     temp_sensor_mapper->setModel(temp_sensor);
     temp_sensor_mapper->setXColumn(0);

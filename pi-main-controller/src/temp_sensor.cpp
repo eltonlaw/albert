@@ -22,12 +22,10 @@ TempSensor::TempSensor()
 void TempSensor::append(const QPointF& point)
 {
     if (queue.capacity == queue.size) {
-        // beginMoveRows(QModelIndex(), 0, 0, QModelIndex() , rowCount());
         queue.enqueue(point);
-        QModelIndex top = createIndex(0, 0);
-        QModelIndex bottom = createIndex(rowCount() - 1, 2);
-        emit dataChanged(top, bottom);
-        // endMoveRows();
+        QModelIndex top_left = createIndex(0, 0);
+        QModelIndex bottom_right = createIndex(rowCount(), 2);
+        emit dataChanged(top_left, bottom_right);
     } else {
         beginInsertRows(QModelIndex(), rowCount() -1 , rowCount() -1);
         queue.enqueue(point);
@@ -79,10 +77,13 @@ QVariant TempSensor::data(const QModelIndex &index, int role) const
 {
     Q_UNUSED(role)
     auto r = index.row();
+    auto e = queue.get(r);
     if (index.column() == 0)
-        return queue.get(r).x();
+        // FIXME: Hacky, this is circumventing the QModelIndex using
+        // the row index and a fixed queue.
+        return r;
     else
-        return queue.get(r).y();
+        return e.y();
 }
 
 /* Read temperature from device
@@ -105,10 +106,10 @@ void TempSensor::poll(std::chrono::milliseconds ms)
     std::thread t([this, ms] {
         for(double t=0 ; ; t+=1)
         {
-            // double y = read_temperature_sensor();
-            double y = (1 + sin(t/10.0)) / 2.0 * 20;
+            double y = read_temperature_sensor();
+            // double y = (1 + sin(t/10.0)) / 2.0 * 20;
 
-            emit new_temp_measurement(QPointF(t, y));
+            emit new_temp_measurement(QPointF((int)t % queue.capacity, y));
 
             std::this_thread::sleep_for(ms);
         }

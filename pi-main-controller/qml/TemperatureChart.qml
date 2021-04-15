@@ -11,7 +11,7 @@ ChartView {
     ValueAxis {
         id: axisX
         min: 0
-        max: 400
+        max: 9
     }
 
     ValueAxis {
@@ -24,7 +24,7 @@ ChartView {
         temp_sensor_mapper.series = series2
     }
 
-    LineSeries {
+    SplineSeries {
         id: series2
         axisX: axisX
         axisY: axisY
