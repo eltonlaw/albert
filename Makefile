@@ -1,36 +1,21 @@
-# Assumption that this makefile is run from the root of `pi-main-controller`
+# Assumption that this makefile is run from the root of `joomby`
+BR_EXT=BR2_EXTERNAL=$(PWD)/br-ext-tree
 
 build: buildroot/.git
 	cd buildroot/ && git reset --hard
-	# Synchronize configs from both sides
-	@make sync-config
-	# Cleanup buildroot build
-	@make clean-br
-	# Copy over source
-	cp -R pi-main-controller/ buildroot/package/pi-main-controller/
-	# Copy board files (overwriting existing files if needed)
-	cp pi-main-controller/board/* buildroot/board/raspberrypi
-	./scripts/run.py add-package
 	# Patch qt5webengine so that host-libjpeg and host-freetype are dependencies
 	cd buildroot/ && git apply ../patches/0001-package-qt5webengine-needs-host-freetype-host-libjpeg.patch
+	# config
+	@make joomby_defconfig
 	# Rebuild project
-	@make pi-main-controller-rebuild
+	@make joomby-rebuild
 	# Run build
-	cd buildroot && make
+	cd buildroot && make $(BR_EXT)
 	@make check
 
 check:
-	ls buildroot/output/build/pi-main-controller-0.0.2
-	ls buildroot/output/target/usr/bin/pi-main-controller
-
-# Whichever config is newer, sync that to the other
-sync-config:
-	rsync -rtuv pi-main-controller/.config buildroot/.config
-	rsync -rtuv buildroot/.config pi-main-controller/.config
-
-clean-br:
-	cd buildroot && git checkout -- .
-	rm -rf buildroot/package/pi-main-controller
+	ls buildroot/output/build/joomby-0.0.2
+	ls buildroot/output/target/usr/bin/joomby
 
 flash: buildroot/output/images/sdcard.img
 	stat -c %y buildroot/output/images/sdcard.img
@@ -41,12 +26,17 @@ buildroot/.git:
 	git submodule update --init
 
 # Removes cached build and runs rebuild
-pi-main-controller-rebuild:
-	cd buildroot && make pi-main-controller-dirclean
+joomby-rebuild:
+	cd buildroot && make joomby-dirclean $(BR_EXT)
+	cd buildroot && make $@ $(BR_EXT)
+
+# Saves
+savedefconfig:
 	cd buildroot && make $@
 
-barebox-menuconfig linux-menuconfig menuconfig uboot-menuconfig:
-	cd buildroot && make $@
+barebox-menuconfig linux-menuconfig menuconfig uboot-menuconfig savedefconfig joomby_defconfig:
+	@echo $(BR_EXT)
+	cd buildroot && make $@ $(BR_EXT)
 
 run:
-	cd pi-main-controller && make $@
+	cd br-ext-tree/package/joomby && make $@

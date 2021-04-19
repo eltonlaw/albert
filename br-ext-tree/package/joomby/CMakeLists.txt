@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.6.0)
 
-set(PROJECT pi-main-controller)
+set(PROJECT joomby)
 project(${PROJECT} VERSION 1.0.0 LANGUAGES CXX)
 
 if(CMAKE_VERSION VERSION_LESS "3.7.0")

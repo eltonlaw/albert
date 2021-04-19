@@ -1,0 +1,4 @@
+config BR2_PACKAGE_JOOMBY
+	bool "joomby"
+	help
+        raspberry pi 3 sensor controller QT app

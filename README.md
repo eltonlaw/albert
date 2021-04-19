@@ -1,6 +1,6 @@
-# pi-main-controller
+# joomby
 
-## Develop on Host Machine
+## QT Dev on Host Machine
 
 ### Deps
 
@@ -13,11 +13,12 @@ Local deps:
 
 To build:
 
-	cd src
-    mkdir build
+	cd br-ext-tree/package/joomby
+    mkdir build && cd build
+    cmake ..
     make
 
-## Building
+## Building the image
 
     make build
 
@@ -35,4 +36,4 @@ Plugging the SD card in, it boots into a login prompt which are `root` and `pass
 
 To start the app run:
 
-    pi-main-controller
+    joomby

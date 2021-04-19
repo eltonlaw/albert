@@ -15,10 +15,10 @@ build:
 	cd build && make
 
 run: build
-	./build/pi-main-controller
+	./build/joomby
 
 gdb: build
-	gdb ./build/pi-main-controller
+	gdb ./build/joomby
 
 test: build 
 	./build/run_tests

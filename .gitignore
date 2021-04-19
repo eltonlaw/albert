@@ -1,4 +1,4 @@
-pi-main-controller/build/pi-main-controller
-pi-main-controller/build
-pi-main-controller/board/wpa_supplicant.conf
-pi-main-controller/test/run_tests
+br-ext-tree/joomby/build/joomby
+br-ext-tree/joomby/build
+br-ext-tree/joomby/board/wpa_supplicant.conf
+br-ext-tree/joomby/test/run_tests
