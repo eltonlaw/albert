@@ -1,4 +1,4 @@
-br-ext-tree/joomby/build/joomby
-br-ext-tree/joomby/build
-br-ext-tree/joomby/board/wpa_supplicant.conf
-br-ext-tree/joomby/test/run_tests
+br-ext-tree/package/joomby/build
+br-ext-tree/package/joomby/test/run_tests
+br-ext-tree/package/temperature-sensor/build
+br-ext-tree/board/wpa_supplicant.conf
