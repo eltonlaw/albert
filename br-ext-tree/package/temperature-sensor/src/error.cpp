@@ -10,27 +10,15 @@ namespace TemperatureSensor
 {
 namespace Error
 {
-const char* DivisionByZero::name() const noexcept
+const char* FileNotFound::name() const noexcept
 {
     return errName;
 }
-const char* DivisionByZero::description() const noexcept
+const char* FileNotFound::description() const noexcept
 {
     return errDesc;
 }
-const char* DivisionByZero::what() const noexcept
-{
-    return errWhat;
-}
-const char* PermissionDenied::name() const noexcept
-{
-    return errName;
-}
-const char* PermissionDenied::description() const noexcept
-{
-    return errDesc;
-}
-const char* PermissionDenied::what() const noexcept
+const char* FileNotFound::what() const noexcept
 {
     return errWhat;
 }

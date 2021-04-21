@@ -4,57 +4,8 @@ methods:
     - name: Read
       description: >
         Reads current data off sensor
-      parameters:
-        - name: x
-          type: int64
-          description: >
-            The first integer to multiply.
-        - name: y
-          type: int64
-          description: >
-            The second integer to multiply.
-          default: 1
       returns:
-        - name: z
+        - name: t
           type: int64
           description: >
             The result of (x*y).
-properties:
-    - name: LastResult
-      type: int64
-      default: 0
-      description: >
-        The result of the most recent calculation.
-    - name: Status
-      type: enum[self.State]
-      default: Success
-      flags:
-        - const
-      description: >
-        The current state of the Calculator.
-    - name: Owner
-      type: string
-      description: >
-        The name of the owner of the Calculator.
-      errors:
-        - self.Error.PermissionDenied
-signals:
-    - name: Cleared
-      description: >
-        Signal indicating the LastReset property has been set to zero by the
-        'Clear' method.
-      properties:
-        - type: int64
-          description: >
-            Value of LastReset prior to Clear.
-enumerations:
-    - name: State
-      description: >
-        Identifies if the service has encountered an error or not.
-      values:
-        - name: Success
-          description: >
-            No error has been encountered.
-        - name: Error
-          description: >
-            The service has encountered an error.
