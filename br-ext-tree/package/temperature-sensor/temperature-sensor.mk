@@ -1,0 +1,12 @@
+TEMPERATURE_SENSOR_VERSION = 0.0.2
+TEMPERATURE_SENSOR = MIT
+TEMPERATURE_SENSOR_SITE = $(BR2_EXTERNAL_JOOMBY_PATH)/package/temperature-sensor
+TEMPERATURE_SENSOR_SITE_METHOD = local
+TEMPERATURE_SENSOR_DEPENDENCIES = systemd sdbusplus
+
+
+define TEMPERATURE_SENSOR_INSTALL_TARGET_CMDS
+	$(INSTALL) -D -m 0755 $(@D)/temperature-sensor $(TARGET_DIR)/usr/bin/temperature-sensor
+endef
+
+$(eval $(cmake-package))
