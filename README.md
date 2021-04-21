@@ -1,28 +1,36 @@
 # joomby
 
-## QT Dev on Host Machine
+This is a custom linux image for the raspberry pi built with [BuildRoot](https://buildroot.org/). UI built with QT which just charts randomly generated numbers in real time.
+
+![Joomby UI demo](https://github.com/eltonlaw/joomby/blob/3b02373d56f1f64afe11e74cd11387baf1234f45/docs/demo_01.gif)
+
+## Dev
 
 ### Deps
 
-#### ArchLinux
-
-Local deps:
-
     sudo pacman -S cmake qt5-base qt5-charts qt5-quickcontrols qt5-quickcontrols2
 
-
-To build:
+### Building the UI
 
 	cd br-ext-tree/package/joomby
     mkdir build && cd build
     cmake ..
     make
 
-## Building the image
+### Building the Temperature Sensor Systemd Dbus Server
+
+	cd br-ext-tree/package/temperature-sensor
+    mkdir build && cd build
+    cmake ..
+    make
+
+### Building the OS image
 
     make build
 
-## Flashing RPI
+Basically this generates the custom config defined for this board and calls make in the `buildroot` submodule, providing the custom packages built in this repo to the build process via Buildroot's external tree argument. On build complete, an image will be at `buildroot/output/images/sdcard.img`
+
+### Flashing RPI
 
 My machine has two drives so USBs are generally `/dev/sdc` for me and is hardcoded in the Makefile, this probably needs to be modified depending on your setup (`lsblk`, change the `SD_DEVICE` variable) . Assuming the OS image has been built and exists at `./buildroot/output/images/sdcard.img`, running: 
 
@@ -30,10 +38,8 @@ My machine has two drives so USBs are generally `/dev/sdc` for me and is hardcod
 
 will just `dd` it into the SD card.
 
-## Running Flashed Program
+### Running Flashed Program
 
-Plugging the SD card in, it boots into a login prompt which are `root` and `pass`.
+Plugging the SD card in, it boots into a login prompt with credentials `root` and `pass`. To start the UI:
 
-To start the app run:
-
-    joomby
+    $ joomby
