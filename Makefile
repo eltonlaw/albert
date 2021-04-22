@@ -5,6 +5,9 @@ build: buildroot/.git
 	cd buildroot/ && git reset --hard
 	# Patch qt5webengine so that host-libjpeg and host-freetype are dependencies
 	cd buildroot/ && git apply ../patches/0001-package-qt5webengine-needs-host-freetype-host-libjpeg.patch
+	# Add sdbus-cpp package, unmerged PR from
+	# http://buildroot-busybox.2317881.n4.nabble.com/PATCH-1-1-sdbus-cpp-new-package-td268366.html
+	cd buildroot/ && git apply ../patches/0002-package-sdbus-cpp-init.patch
 	# config
 	@make joomby_defconfig
 	# Rebuild project
