@@ -1,0 +1,22 @@
+From b04e5624b23b29799da15feec7b727fdc0c161c2 Mon Sep 17 00:00:00 2001
+From: Elton Law <eltonlaw296@gmail.com>
+Date: Mon, 26 Apr 2021 20:30:21 -0400
+Subject: [PATCH] [PATCH] package/rpi-firmware: enable i2c bus
+
+---
+ package/rpi-firmware/config.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/package/rpi-firmware/config.txt b/package/rpi-firmware/config.txt
+index 4a92a4dd95..791d3cb195 100644
+--- a/package/rpi-firmware/config.txt
++++ b/package/rpi-firmware/config.txt
+@@ -23,3 +23,5 @@ disable_overscan=1
+ gpu_mem_256=100
+ gpu_mem_512=100
+ gpu_mem_1024=100
++
++dtparam=i2c_arm=on
+-- 
+2.31.1
+
