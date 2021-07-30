@@ -1,12 +1,13 @@
 #include <fstream>
 #include <filesystem>
+#include <iostream>
 #include <sdbusplus/server.hpp>
 #include "org/joomby/TemperatureSensor/server.hpp"
 #include "org/joomby/TemperatureSensor/error.hpp"
 
 using server = sdbusplus::server::object_t<sdbusplus::org::joomby::server::TemperatureSensor>;
 
-constexpr auto device_path = "/dev/bme2800";
+constexpr auto device_path = "/dev/urandom";
 std::ifstream f;
 
 struct TemperatureSensor : server {
@@ -33,6 +34,7 @@ int main() {
     b.request_name("org.joomby.TemperatureSensor");
 
     TemperatureSensor sensor{b, path};
+    std::cout << "Server initialized. Waiting on requests..." << std::endl;
 
     while (1) {
         b.process_discard(); // discard any unhandled messages
