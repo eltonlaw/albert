@@ -30,6 +30,8 @@ set(LIBS
     Qt5::Quick
     Qt5::Gui
     Qt5::Charts
+    systemd
+    sdbusplus
     pthread
     )
 
