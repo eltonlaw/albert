@@ -5,6 +5,8 @@
 #include <QList>
 #include <QPointF>
 #include <vector>
+#include <sdbusplus/bus.hpp>
+#include <sdbusplus/message.hpp>
 
 #include "lib/lib.h"
 
@@ -30,4 +32,10 @@ private:
     void append(const QPointF& point);
     lib::fixed_queue<QPointF, 10> queue;
     lib::urandom rng {};
+    sdbusplus::bus::bus b = sdbusplus::bus::new_user();
+    sdbusplus::message::message m = \
+        b.new_method_call("org.joomby.TemperatureSensor",
+                          "/org/joomby/TemperatureSensor",
+                          "org.joomby.TemperatureSensor",
+                          "Read");
 };

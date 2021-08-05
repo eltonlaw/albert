@@ -9,6 +9,8 @@
 #include <QtGlobal>
 #include <QVariant>
 #include <thread>
+#include <sdbusplus/bus.hpp>
+#include <sdbusplus/message.hpp>
 
 #include "temp_sensor.h"
 
@@ -91,7 +93,16 @@ QVariant TempSensor::data(const QModelIndex &index, int role) const
  * Assumes that there's a char device driver at `/dev/bme280`
  */
 double TempSensor::read_temperature_sensor() {
-    return (double) (rng.random() % 25);
+    int temp;
+    auto reply = b.call(m);
+    // FIXME: Getting the following runtime error when uncommenting this .read
+    //   ...
+    //   terminate called after throwing an instance of
+    //   'sdbusplus::exception::SdBusError' what():  sd_bus_message_read_basic
+    //   fundamental: System.Error.ENXIO: No such device or address
+    //   ...
+    // reply.read(temp);
+    return (double) temp;
 }
 
 /* Continuously poll temperature sensor
