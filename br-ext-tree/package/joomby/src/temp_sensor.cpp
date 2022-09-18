@@ -27,7 +27,7 @@ void TempSensor::append(const QPointF& point)
         QModelIndex bottom_right = createIndex(rowCount(), 2);
         emit dataChanged(top_left, bottom_right);
     } else {
-        beginInsertRows(QModelIndex(), rowCount() -1 , rowCount() -1);
+        beginInsertRows(QModelIndex(), rowCount() , rowCount());
         queue.enqueue(point);
         endInsertRows();
     }
