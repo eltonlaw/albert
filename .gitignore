@@ -1,4 +1,5 @@
 br-ext-tree/package/joomby/build
 br-ext-tree/package/joomby/test/run_tests
+br-ext-tree/configs/joomby_dev_defconfig
 br-ext-tree/package/temperature-sensor/build
 br-ext-tree/board/wpa_supplicant.conf

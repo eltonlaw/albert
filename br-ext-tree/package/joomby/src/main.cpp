@@ -6,6 +6,7 @@
 #include <QVXYModelMapper>
 #include "temp_sensor.h"
 
+/* Start QT5 UI */
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
