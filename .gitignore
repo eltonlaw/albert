@@ -3,3 +3,22 @@ br-ext-tree/package/joomby/test/run_tests
 br-ext-tree/configs/joomby_dev_defconfig
 br-ext-tree/package/temperature-sensor/build
 br-ext-tree/board/wpa_supplicant.conf
+
+# Ignore list for KiCAD Projects
+# Temporary files
+*.000
+*.bak
+*.bck
+*.kicad_pcb-bak
+*.sch-bak
+*~
+_autosave-*
+*.tmp
+*-save.pro
+*-save.kicad_pcb
+fp-info-cache
+# Netlist files (exported from Eeschema)
+*.net
+# Autorouter files (exported from Pcbnew)
+*.dsn
+*.ses
