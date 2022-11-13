@@ -1,4 +1,4 @@
 menu "Custom"
-	source "$BR2_EXTERNAL_JOOMBY_PATH/package/joomby/Config.in"
-	source "$BR2_EXTERNAL_JOOMBY_PATH/package/temperature-sensor/Config.in"
+	source "$BR2_EXTERNAL_ALBERT_PATH/package/albert-ui/Config.in"
+	source "$BR2_EXTERNAL_ALBERT_PATH/package/albert-temperature-sensor/Config.in"
 endmenu

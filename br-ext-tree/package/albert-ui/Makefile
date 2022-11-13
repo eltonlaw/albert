@@ -1,5 +1,7 @@
 .PHONY: build test
 
+BIN=albert-ui
+
 DEBUG=-DCMAKE_BUILD_TYPE=Debug
 
 # FIXME: the default PI_MAIN_CONTROLLER_BUILD_CMDS seems to be just a `make` so
@@ -15,10 +17,10 @@ build:
 	cd build && make
 
 run: build
-	./build/joomby
+	./build/$(BIN)
 
 gdb: build
-	gdb ./build/joomby
+	gdb ./build/$(BIN)
 
 test: build 
 	./build/run_tests

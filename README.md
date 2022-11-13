@@ -1,8 +1,8 @@
-# joomby
+# albert
 
 This is a custom linux image for the raspberry pi built with [BuildRoot](https://buildroot.org/). UI built with QT which just charts randomly generated numbers in real time.
 
-![Joomby UI demo](https://github.com/eltonlaw/joomby/blob/3b02373d56f1f64afe11e74cd11387baf1234f45/docs/demo_01.gif)
+![Albert UI demo](https://github.com/eltonlaw/albert/blob/3b02373d56f1f64afe11e74cd11387baf1234f45/docs/demo_01.gif)
 
 ## Dev
 
@@ -12,7 +12,7 @@ This is a custom linux image for the raspberry pi built with [BuildRoot](https:/
 
 ### Building the UI
 
-	cd br-ext-tree/package/joomby
+	cd br-ext-tree/package/albert
     mkdir build && cd build
     cmake ..
     make
@@ -42,4 +42,4 @@ will just `dd` it into the SD card.
 
 Plugging the SD card in, it boots into a login prompt with credentials `root` and `pass`. To start the UI:
 
-    $ joomby
+    $ albert-ui

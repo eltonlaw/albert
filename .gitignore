@@ -1,7 +1,7 @@
-br-ext-tree/package/joomby/build
-br-ext-tree/package/joomby/test/run_tests
-br-ext-tree/configs/joomby_dev_defconfig
-br-ext-tree/package/temperature-sensor/build
+br-ext-tree/package/albert-ui/build
+br-ext-tree/package/albert-ui/test/run_tests
+br-ext-tree/configs/albert_dev_defconfig
+br-ext-tree/package/albert-temperature-sensor/build
 br-ext-tree/board/wpa_supplicant.conf
 
 # Ignore list for KiCAD Projects
@@ -22,3 +22,4 @@ fp-info-cache
 # Autorouter files (exported from Pcbnew)
 *.dsn
 *.ses
+pcb_pi_shield/pcb_pi_shield-backups/

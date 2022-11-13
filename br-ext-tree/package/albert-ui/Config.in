@@ -1,4 +1,4 @@
-config BR2_PACKAGE_JOOMBY
-	bool "joomby"
+config BR2_PACKAGE_ALBERT_UI
+	bool "albert-ui"
 	help
         raspberry pi 3 sensor controller QT app

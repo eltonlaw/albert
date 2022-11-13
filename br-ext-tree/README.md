@@ -3,8 +3,8 @@
 	├── board
 	├── Config.in
 	├── configs
-	│   └── joomby_defconfig
+	│   └── albert_defconfig
 	├── external.desc
 	├── external.mk
 	└── package
-	    └── joomby
+	    └── albert
