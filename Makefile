@@ -1,6 +1,12 @@
+# .env file should have
+# - ${DEV_RPI}: for sshing into a device, `<username>@<host>`
+include .env
+
 # Assumption that this makefile is run from the root of `albert`
+
 MODULE_NAME=albert
-BR_EXT=BR2_EXTERNAL=$(PWD)/br-ext-tree
+ROOT_PWD=$(PWD)
+BR_EXT=BR2_EXTERNAL=$(ROOT_PWD)/br-ext-tree
 
 build-dev: $(MODULE_NAME)-create-dev-defconfig
 	@make defconfig=$(MODULE_NAME)_dev_defconfig build-image
@@ -12,7 +18,7 @@ build-image: buildroot/.git
 	# cd buildroot/ && git reset --hard
 	# config
 	@make $(defconfig)
-	# Rebuild project
+	# Rebuild projects
 	@make $(MODULE_NAME)-rebuild
 	# Run build
 	cd buildroot && make $(BR_EXT)
@@ -42,7 +48,13 @@ $(MODULE_NAME)-rebuild:
 	cd buildroot && make $(MODULE_NAME)-ui-dirclean $(BR_EXT)
 	cd buildroot && make $(MODULE_NAME)-ui-rebuild $(BR_EXT)
 
-barebox-menuconfig linux-menuconfig menuconfig uboot-menuconfig savedefconfig $(MODULE_NAME)_defconfig $(MODULE_NAME)_dev_defconfig:
+savedefconfig:
+	cd buildroot && make savedefconfig BR2_DEFCONFIG=$(ROOT_PWD)/br-ex-tree/configs/albert_defconfig
+
+savedevdefconfig:
+	cd buildroot && make savedefconfig BR2_DEFCONFIG=../br-ex-tree/configs/albert_dev_defconfig
+
+barebox-menuconfig linux-menuconfig menuconfig uboot-menuconfig $(MODULE_NAME)_defconfig $(MODULE_NAME)_dev_defconfig:
 	@echo $(BR_EXT)
 	cd buildroot && make $@ $(BR_EXT)
 
@@ -51,3 +63,6 @@ run:
 
 clean:
 	cd buildroot && make clean
+
+dev:
+	rsync -avz ./br-ext-tree/package/* ${DEV_RPI}:/home/d0nkrs/albert/br-ext-tree/package/

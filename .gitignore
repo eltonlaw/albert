@@ -4,6 +4,9 @@ br-ext-tree/configs/albert_dev_defconfig
 br-ext-tree/package/albert-temperature-sensor/build
 br-ext-tree/board/wpa_supplicant.conf
 
+# Makefile, custom env vars
+.env
+
 # Ignore list for KiCAD Projects
 # Temporary files
 *.000
