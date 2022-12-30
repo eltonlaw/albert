@@ -21,7 +21,7 @@ build-image: buildroot/.git
 	# Rebuild projects
 	@make $(MODULE_NAME)-rebuild
 	# Run build
-	cd buildroot && make $(BR_EXT)
+	cd buildroot && make -j4 $(BR_EXT)
 	@make check
 
 check:
@@ -54,7 +54,7 @@ savedefconfig:
 savedevdefconfig:
 	cd buildroot && make savedefconfig BR2_DEFCONFIG=../br-ex-tree/configs/albert_dev_defconfig
 
-barebox-menuconfig linux-menuconfig menuconfig uboot-menuconfig $(MODULE_NAME)_defconfig $(MODULE_NAME)_dev_defconfig:
+barebox-menuconfig linux-menuconfig menuconfig uboot-menuconfig $(MODULE_NAME)_defconfig $(MODULE_NAME)_dev_defconfig graph-depends show-info pkg-stats:
 	@echo $(BR_EXT)
 	cd buildroot && make $@ $(BR_EXT)
 
@@ -63,7 +63,7 @@ run:
 
 clean:
 	cd buildroot && make clean
-	ccache --clear
+	ccache --clear --dir $$HOME/.buildroot-ccache
 
 dev:
 	rsync -avz ./br-ext-tree/package/* ${DEV_RPI}:/home/d0nkrs/albert/br-ext-tree/package/
