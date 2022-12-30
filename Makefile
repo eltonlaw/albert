@@ -63,6 +63,7 @@ run:
 
 clean:
 	cd buildroot && make clean
+	ccache --clear
 
 dev:
 	rsync -avz ./br-ext-tree/package/* ${DEV_RPI}:/home/d0nkrs/albert/br-ext-tree/package/
