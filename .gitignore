@@ -1,5 +1,15 @@
+br-ext-tree/package/albert-ui/albert-ui
+br-ext-tree/package/albert-ui/albert-ui_autogen
 br-ext-tree/package/albert-ui/build
+br-ext-tree/package/albert-ui/build.ninja
+br-ext-tree/package/albert-ui/CMakeCache.txt
+br-ext-tree/package/albert-ui/CMakeFiles
+br-ext-tree/package/albert-ui/cmake_install.cmake
+br-ext-tree/package/albert-ui/qml.qrc.depends
+br-ext-tree/package/albert-ui/qrc_qml.cpp
 br-ext-tree/package/albert-ui/test/run_tests
+br-ext-tree/package/albert-ui/.ninja_deps
+br-ext-tree/package/albert-ui/.ninja_log
 br-ext-tree/configs/albert_dev_defconfig
 br-ext-tree/package/albert-temperature-sensor/build
 br-ext-tree/board/wpa_supplicant.conf
