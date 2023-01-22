@@ -16,6 +16,7 @@ endif()
 
 find_package(Qt5 COMPONENTS Qml Quick Gui Charts REQUIRED)
 
+# FIXME: Compile qml bytecode ahead of time with qtquick_compiler_add_resources(...)
 qt_add_resources(QT_RESOURCES qml.qrc)
 
 # Get all project *.cpp and *.h files

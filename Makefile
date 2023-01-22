@@ -9,7 +9,7 @@ ROOT_PWD=$(PWD)
 BR_EXT=BR2_EXTERNAL=$(ROOT_PWD)/br-ext-tree
 
 build-dev: $(MODULE_NAME)-create-dev-defconfig
-	@make defconfig=$(MODULE_NAME)_dev_defconfig build-image
+	@make build-image defconfig=$(MODULE_NAME)_dev_defconfig
 
 build:
 	@make build-image defconfig=$(MODULE_NAME)_defconfig
