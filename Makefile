@@ -21,7 +21,7 @@ build-image: buildroot/.git
 	# Rebuild projects
 	@make $(MODULE_NAME)-rebuild
 	# Run build
-	cd buildroot && make -j4 $(BR_EXT)
+	cd buildroot && make $(BR_EXT)
 	@make check
 
 check:
