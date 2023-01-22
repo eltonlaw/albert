@@ -35,7 +35,7 @@ void TempSensor::append(const QPointF& point)
 
 /* Returns number of time/temperature datapoints available
  *
- * Number of rows should usually be the max size of the fixed_queue
+ * Number of rows should usually be the max size of the circular_queue
  * except in the beginning (when its still filling up)
  *
  * Required when subclassing QAbstractTableModel
@@ -71,7 +71,7 @@ QVariant TempSensor::headerData(int section, Qt::Orientation orientation, int ro
 
 /* Returns most recent n temperatures
  *
- * ...where n is the size of the fixed_queue, currently hardcoded at 50
+ * ...where n is the size of the circular_queue, currently hardcoded at 50
 +*/
 QVariant TempSensor::data(const QModelIndex &index, int role) const
 {

@@ -13,17 +13,17 @@ namespace lib  {
  * overwrites an element.
  */
 template <typename T, int max_len>
-class fixed_queue {
+class circular_queue {
 public:
-    fixed_queue();
-    ~fixed_queue();
+    circular_queue();
+    ~circular_queue();
     void pop_front();
 
     bool is_full();
     void enqueue(const T& value);
     const T& get(int i) const;
     
-    // const T& fixed_queue[](std::size_t idx) const;
+    // const T& circular_queue[](std::size_t idx) const;
     int size = 0;
     int capacity = max_len;
 
@@ -33,14 +33,14 @@ private:
 };
 
 template <typename T, int max_len>
-fixed_queue<T, max_len>::fixed_queue() :
+circular_queue<T, max_len>::circular_queue() :
     vec(max_len) { }
 
 template <typename T, int max_len>
-fixed_queue<T, max_len>::~fixed_queue() {  }
+circular_queue<T, max_len>::~circular_queue() {  }
 
 template <typename T, int max_len>
-bool fixed_queue<T, max_len>::is_full() {
+bool circular_queue<T, max_len>::is_full() {
     return (size == vec.size());
 }
 
@@ -56,7 +56,7 @@ bool fixed_queue<T, max_len>::is_full() {
  * - Vector is not full => Add to end
  */
 template <typename T, int max_len>
-void fixed_queue<T, max_len>::enqueue(const T& value) {
+void circular_queue<T, max_len>::enqueue(const T& value) {
     if (is_full()) {
         if (i_start == size)
            i_start = 0; 
@@ -67,7 +67,7 @@ void fixed_queue<T, max_len>::enqueue(const T& value) {
 }
 
 template <typename T, int max_len>
-const T& fixed_queue<T, max_len>::get(int i) const {
+const T& circular_queue<T, max_len>::get(int i) const {
     int i_offset = i + i_start;
     if (i + i_start >= vec.size())
         i_offset -= vec.size();
