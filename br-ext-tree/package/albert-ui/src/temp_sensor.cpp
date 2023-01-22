@@ -1,4 +1,3 @@
-#include <cmath>
 #include <QAbstractItemModel>
 #include <QDebug>
 #include <QList>
