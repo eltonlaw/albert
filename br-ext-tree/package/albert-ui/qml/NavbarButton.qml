@@ -7,7 +7,6 @@ Button {
         implicitWidth: 80
         implicitHeight: 35
         opacity: enabled ? 1 : 0.3
-        border.color: "#eee"
-        border.width: 1
+        color: "#857F72"
     }
 }

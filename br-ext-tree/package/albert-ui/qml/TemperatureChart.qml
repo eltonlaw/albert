@@ -5,6 +5,7 @@ import QtCharts 2.15
 ChartView {
     title: "Temperature"
     id: chartView
+    backgroundColor: "#FAF9F7"
     anchors.fill: parent
 
     ValueAxis {

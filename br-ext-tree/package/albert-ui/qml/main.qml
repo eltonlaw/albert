@@ -8,6 +8,7 @@ Window {
     width: 800
     height: 480
     visible: true
+    color: "#121212"
     MouseArea {
         anchors.fill: parent
     }
@@ -24,6 +25,7 @@ Window {
             spacing: 5
 
             component GridRect: Rectangle {
+                color: "#857F72"
                 width: 400
                 height: 225
             }
