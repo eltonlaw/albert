@@ -2,7 +2,6 @@ import QtQuick 2.7
 import QtQuick.Window 2.7
 import QtCharts 2.15
 import QtQuick.Controls 2.0
-import "."
 
 // main window
 Window {
