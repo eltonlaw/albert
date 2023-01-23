@@ -23,9 +23,12 @@ Window {
             columns: 2
             spacing: 5
 
-            Rectangle {
+            component GridRect: Rectangle {
                 width: 400
                 height: 225
+            }
+
+            GridRect {
                 TemperatureChart {
 
                 }
