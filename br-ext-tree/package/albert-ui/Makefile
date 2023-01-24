@@ -27,3 +27,10 @@ test: build
 
 clean:
 	cd build && make $@
+
+clean-ninja:
+	@rm build.ninja
+	@rm cmake_install.cmake
+	@rm CMakeCache.txt
+	@rm qml.qrc.depends
+	@rm qrc_qml.cpp
