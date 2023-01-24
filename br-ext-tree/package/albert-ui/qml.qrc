@@ -3,6 +3,8 @@
         <file>qml/main.qml</file>
         <file>qml/Navbar.qml</file>
         <file>qml/NavbarButton.qml</file>
+        <file>qml/Style.qml</file>
+        <file>qml/themes/Default.qml</file>
         <file>qml/TemperatureChart.qml</file>
     </qresource>
 </RCC>

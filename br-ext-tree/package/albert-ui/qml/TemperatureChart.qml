@@ -5,7 +5,7 @@ import QtCharts 2.15
 ChartView {
     title: "Temperature"
     id: chartView
-    backgroundColor: "#FAF9F7"
+    backgroundColor: style.theme.color_300
     anchors.fill: parent
 
     ValueAxis {
@@ -29,5 +29,9 @@ ChartView {
         axisX: axisX
         axisY: axisY
         name: "BME280"
+        // FIXME: "qrc:/qml/TemperatureChart.qml:33: TypeError: Cannot read
+        // property 'active1_color' of undefined"
+        // color: style.theme.active1_color
+        color: "#A32CC4"
     }
 }

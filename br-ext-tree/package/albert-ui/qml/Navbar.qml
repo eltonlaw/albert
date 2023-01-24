@@ -2,7 +2,7 @@ import QtQuick 2.7
 import QtQuick.Controls 2.0
 
 Grid {
-    width: 800
+    width: root.width
     spacing: 0
     columns: 10
     NavbarButton {

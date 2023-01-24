@@ -5,10 +5,14 @@ import QtQuick.Controls 2.0
 
 // main window
 Window {
-    width: 800
-    height: 480
+    id: root
+    Style { id: style }
+
+    // flags: Qt.FramelessWindowHint
+    width: style.screen_width
+    height: style.screen_height
     visible: true
-    color: "#121212"
+    color: style.theme.background_color
     MouseArea {
         anchors.fill: parent
     }
@@ -17,7 +21,7 @@ Window {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         Navbar {
-            width: 800
+            width: root.width
             height: 30
         }
         Grid {
@@ -25,7 +29,7 @@ Window {
             spacing: 5
 
             component GridRect: Rectangle {
-                color: "#857F72"
+                color: style.theme.background_color
                 width: 400
                 height: 225
             }
