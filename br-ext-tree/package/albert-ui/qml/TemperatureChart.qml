@@ -7,6 +7,7 @@ ChartView {
     id: chartView
     backgroundColor: style.theme.color_300
     anchors.fill: parent
+    Style { id: style }
 
     ValueAxis {
         id: axisX
@@ -29,9 +30,6 @@ ChartView {
         axisX: axisX
         axisY: axisY
         name: "BME280"
-        // FIXME: "qrc:/qml/TemperatureChart.qml:33: TypeError: Cannot read
-        // property 'active1_color' of undefined"
-        // color: style.theme.active1_color
-        color: "#A32CC4"
+        color: style.theme.active1_color
     }
 }
