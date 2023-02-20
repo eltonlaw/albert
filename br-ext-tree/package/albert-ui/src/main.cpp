@@ -1,5 +1,6 @@
 #include <QApplication>
 #include <QDebug>
+#include <QDBusConnection>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QQmlEngine>
@@ -12,6 +13,12 @@ int main(int argc, char *argv[])
     // Class that contains the event loop
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication app(argc, argv);
+
+    if (!QDBusConnection::sessionBus().isConnected()) {
+        qWarning("Cannot connect to the D-Bus session bus.\n"
+                 "Please check your system settings and try again.\n");
+        return 1;
+    }
 
     QQmlApplicationEngine engine;
 

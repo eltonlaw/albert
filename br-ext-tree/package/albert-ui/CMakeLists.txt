@@ -14,7 +14,7 @@ if(CMAKE_VERSION VERSION_LESS "3.7.0")
     set(CMAKE_INCLUDE_CURRENT_DIR ON)
 endif()
 
-find_package(Qt5 COMPONENTS Qml Quick Gui Charts REQUIRED)
+find_package(Qt5 COMPONENTS Charts DBus Gui Network Qml Quick REQUIRED)
 
 # FIXME: Compile qml bytecode ahead of time with qtquick_compiler_add_resources(...)
 qt_add_resources(QT_RESOURCES qml.qrc)
@@ -29,10 +29,12 @@ if(NOT DEFINED HEADERS)
 endif()
 
 set(LIBS
+    Qt5::Charts
+    Qt5::DBus
+    Qt5::Gui
+    Qt5::Network
     Qt5::Qml
     Qt5::Quick
-    Qt5::Gui
-    Qt5::Charts
     pthread
     )
 
