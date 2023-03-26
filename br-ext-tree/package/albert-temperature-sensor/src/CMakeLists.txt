@@ -6,15 +6,11 @@ if(NOT DEFINED HEADERS)
     file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/*/*.h*)
 endif()
 
-find_package(PkgConfig REQUIRED) # Include functions provided by PkgConfig module.
-pkg_check_modules(DBUS REQUIRED dbus-1) # This calls pkgconfig with appropriate arguments
-# Use results of pkg_check_modules() call.
-include_directories(${DBUS_INCLUDE_DIRS})
-link_directories(${DBUS_LIBRARY_DIRS})
+find_package(sdbus-c++ REQUIRED)
 
 set(LIBS
     pthread
-    ${DBUS_LIBRARIES}
+    SDBusCpp::sdbus-c++
     )
 
 add_executable(${PROJECT}
