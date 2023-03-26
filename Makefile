@@ -28,6 +28,10 @@ check:
 	ls buildroot/output/build/$(MODULE_NAME)-ui-0.0.2
 	ls buildroot/output/target/usr/bin/$(MODULE_NAME)-ui
 
+check-packages:
+	./buildroot/utils/check-package -b $(ROOT_PWD)/br-ext-tree/package/albert-ui/*
+	./buildroot/utils/check-package -b $(ROOT_PWD)/br-ext-tree/package/albert-temperature-sensor/*
+
 flash: buildroot/output/images/sdcard.img
 	stat -c %y buildroot/output/images/sdcard.img
 	dd bs=5M if=buildroot/output/images/sdcard.img of=/dev/sdc conv=fsync
