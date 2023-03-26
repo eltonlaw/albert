@@ -5,7 +5,6 @@
 ################################################################################
 
 ALBERT_TEMPERATURE_SENSOR_VERSION = 0.0.1
-ALBERT_TEMPERATURE_SENSOR = MIT
 ALBERT_TEMPERATURE_SENSOR_SITE = $(BR2_EXTERNAL_ALBERT_PATH)/package/albert-temperature-sensor
 ALBERT_TEMPERATURE_SENSOR_SITE_METHOD = local
 ALBERT_TEMPERATURE_SENSOR_DEPENDENCIES = dbus

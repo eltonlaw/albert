@@ -5,7 +5,6 @@
 ################################################################################
 
 ALBERT_UI_VERSION = 0.0.2
-ALBERT_UI = MIT
 ALBERT_UI_SITE = $(BR2_EXTERNAL_ALBERT_PATH)/package/albert-ui
 ALBERT_UI_SITE_METHOD = local
 ALBERT_UI_DEPENDENCIES = qt5base qt5quickcontrols qt5quickcontrols2 qt5charts
