@@ -24,6 +24,11 @@ build-image: buildroot/.git
 	cd buildroot && make $(BR_EXT)
 	@make check
 
+build-image-no-rebuild-custom: buildroot/.git
+	@make $(defconfig)
+	cd buildroot && make $(BR_EXT)
+	@make check
+
 check:
 	ls buildroot/output/build/$(MODULE_NAME)-ui-0.0.2
 	ls buildroot/output/target/usr/bin/$(MODULE_NAME)-ui
