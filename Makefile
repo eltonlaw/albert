@@ -51,6 +51,8 @@ $(MODULE_NAME)-create-dev-defconfig:
 $(MODULE_NAME)-rebuild:
 	cd buildroot && make $(MODULE_NAME)-ui-dirclean $(BR_EXT)
 	cd buildroot && make $(MODULE_NAME)-ui-rebuild $(BR_EXT)
+	cd buildroot && make $(MODULE_NAME)-temperature-sensor-dirclean $(BR_EXT)
+	cd buildroot && make $(MODULE_NAME)-temperature-sensor-rebuild $(BR_EXT)
 
 savedefconfig:
 	cd buildroot && make savedefconfig BR2_DEFCONFIG=$(ROOT_PWD)/br-ex-tree/configs/albert_defconfig
