@@ -14,6 +14,8 @@ br-ext-tree/configs/albert_dev_defconfig
 br-ext-tree/package/albert-temperature-sensor/build
 br-ext-tree/board/wpa_supplicant.conf
 
+**/build-ninja
+
 # Makefile, custom env vars
 .env
 
